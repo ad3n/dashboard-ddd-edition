@@ -4,7 +4,7 @@ Chart.pie = function (data, total, selector, title, handler) {
             plotBackgroundColor: null,
             plotBorderWidth: 1,
             plotShadow: false,
-            height: 177
+            height: 225
         },
         title: {
             text: ''
@@ -35,5 +35,5 @@ Chart.pie = function (data, total, selector, title, handler) {
 
     jQuery(selector + ' .chart-title').html(title);
     jQuery(selector + ' .chart-stage').highcharts(option);
-    jQuery(selector + ' .chart-notes').html('Total: ' + total);
+    jQuery(selector + ' .chart-notes').html('Total: ' + Chart.formatNumber(total, '.'));
 };

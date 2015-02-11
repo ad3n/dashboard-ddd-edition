@@ -53,7 +53,6 @@ Chart.processDataGlobal = function (data) {
     var output = [];
     output['indikator'] = [];
     output['data'] = [];
-    output['data']['name'] = 'Indikator List';
     output['data']['data'] = [];
     output['data']['total'] = 0;
     output['data']['year'] = null;
@@ -78,5 +77,11 @@ Chart.processDataGlobal = function (data) {
         output['data']['data'][key] = Math.round(output['data']['data'][key] / total);
     });
 
+    output['data']['name'] = output['data']['year'];
+
     return output;
+};
+
+Chart.formatNumber = function (number, tousandSeperator) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, tousandSeperator);
 };

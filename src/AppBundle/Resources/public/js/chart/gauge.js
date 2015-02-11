@@ -90,5 +90,5 @@ Chart.gauge = function (data, total, selector, title, startIndicator, yellowIndi
 
     jQuery(selector + ' .chart-title').html(title);
     jQuery(selector + ' .chart-stage').highcharts(option);
-    jQuery(selector + ' .chart-notes').html('Total: ' + total);
+    jQuery(selector + ' .chart-notes').html('Total: ' + Chart.formatNumber(total, '.'));
 };

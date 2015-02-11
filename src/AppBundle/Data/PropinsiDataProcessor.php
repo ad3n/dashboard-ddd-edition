@@ -3,9 +3,9 @@
 namespace AppBundle\Data;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Chart\Data\DoctrineDataProccessor;
+use AppBundle\Chart\Data\DoctrineDataProcessor;
 
-class KelurahanDataProccessor extends DoctrineDataProccessor
+class PropinsiDataProcessor extends DoctrineDataProcessor
 {
     public function __construct(ObjectManager $objectManager, $class)
     {
@@ -14,11 +14,11 @@ class KelurahanDataProccessor extends DoctrineDataProccessor
 
     public function getScope()
     {
-        return;
+        return 'propinsi';
     }
 
     public function getName()
     {
-        return 'kelurahan';
+        return 'propinsi';
     }
 }

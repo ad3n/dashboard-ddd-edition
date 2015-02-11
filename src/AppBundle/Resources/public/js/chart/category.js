@@ -31,9 +31,7 @@ Chart.category = function (data, total, selector, title, xAxis, type, handler) {
         series: data
     };
 
-    console.log(data, xAxis);
-
-    jQuery(selector + ' .chart-title').html(title);
+    jQuery(selector + ' .chart-title').html(title + data[0]['name']);
     jQuery(selector + ' .chart-stage').highcharts(option);
     jQuery(selector + ' .chart-notes').html('Total: ' + total);
 };

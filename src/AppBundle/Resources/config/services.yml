@@ -2,53 +2,58 @@ parameters:
   app.data.class: AppBundle\Entity\Data
 
 services:
-  app.chart.proccessor.nasional:
-    class: AppBundle\Data\NasionalDataProccessor
+  app.chart.processor.nasional:
+    class: AppBundle\Data\NasionalDataProcessor
     arguments:
       - @doctrine.orm.entity_manager
       - %app.data.class%
     tags:
-      - { name: app.chart.data.proccessor }
+      - { name: app.chart.data.processor }
 
-  app.chart.proccessor.propinsi:
-    class: AppBundle\Data\PropinsiDataProccessor
+  app.chart.processor.propinsi:
+    class: AppBundle\Data\PropinsiDataProcessor
     arguments:
       - @doctrine.orm.entity_manager
       - %app.data.class%
     tags:
-      - { name: app.chart.data.proccessor }
+      - { name: app.chart.data.processor }
 
-  app.chart.proccessor.kabupaten:
-    class: AppBundle\Data\KabupatenDataProccessor
+  app.chart.processor.kabupaten:
+    class: AppBundle\Data\KabupatenDataProcessor
     arguments:
       - @doctrine.orm.entity_manager
       - %app.data.class%
     tags:
-      - { name: app.chart.data.proccessor }
+      - { name: app.chart.data.processor }
 
-  app.chart.proccessor.kecamatan:
-    class: AppBundle\Data\KecamatanDataProccessor
+  app.chart.processor.kecamatan:
+    class: AppBundle\Data\KecamatanDataProcessor
     arguments:
       - @doctrine.orm.entity_manager
       - %app.data.class%
     tags:
-      - { name: app.chart.data.proccessor }
+      - { name: app.chart.data.processor }
 
-  app.chart.proccessor.kelurahan:
-    class: AppBundle\Data\KelurahanDataProccessor
+  app.chart.processor.kelurahan:
+    class: AppBundle\Data\KelurahanDataProcessor
     arguments:
       - @doctrine.orm.entity_manager
       - %app.data.class%
     tags:
-      - { name: app.chart.data.proccessor }
+      - { name: app.chart.data.processor }
 
-  app.chart.proccessor.regional:
-    class: AppBundle\Data\RegionalDataProccessor
+  app.chart.processor.regional:
+    class: AppBundle\Data\RegionalDataProcessor
     arguments:
       - @doctrine.orm.entity_manager
       - %app.data.class%
     tags:
-      - { name: app.chart.data.proccessor }
+      - { name: app.chart.data.processor }
 
   app.chart.data.doctrine_collection:
     class: AppBundle\Chart\Data\DoctrineDataCollection
+
+  app.indicator.factory:
+    class: AppBundle\Indikator\IndikatorFactory
+    arguments:
+      - @doctrine.orm.entity_manager

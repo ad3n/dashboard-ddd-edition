@@ -101,6 +101,8 @@
     {{ parent() }}
     <script type="text/javascript">
         jQuery(document).ready(function () {
+
+            //Eary Warning
             Chart.request(function (data) {
                 Chart.createGauge(data, '#block1', data['indikator']['name'], {
                     click: function (e) {
@@ -126,7 +128,7 @@
             }, 'PS03', 'nasional');
 
             Chart.request(function (data) {
-                Chart.createPie(data, '#block4', data['indikator']['name'], {
+                Chart.createGauge(data, '#block4', data['indikator']['name'], {
                     click: function (e) {
                         alert('Under Constructions.');
                     }
@@ -149,6 +151,13 @@
                 });
             }, 'PS06', 'nasional');
 
+            //Total Block
+
+
+            //Main Chart
+            Chart.createMainChart('PS07');
+
+            //Bottom Chart
             Chart.request(function (data) {
                 Chart.createGauge(data, '#block7', data['indikator']['name'], {
                     click: function (e) {
@@ -164,14 +173,6 @@
                     }
                 });
             }, 'PS08', 'nasional');
-
-            Chart.request(function (data) {
-                Chart.createBar({
-                    click: function (e) {
-                        alert('Under Constructions.');
-                    }
-                }, data, '#main-block', data['indikator']['name']);
-            }, 'PS09', 'nasional');
         });
     </script>
 {% endblock %}

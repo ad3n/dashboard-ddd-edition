@@ -4,7 +4,7 @@ namespace AppBundle\Chart\Data;
 
 interface DataFactoryInterface
 {
-    public function addDataProccessor(DataProccessorInterface $dataProccessor);
+    public function addDataProcessor(DataProcessorInterface $dataProcessor);
 
-    public function createDataProccessor($name);
+    public function createDataProcessor($name);
 }

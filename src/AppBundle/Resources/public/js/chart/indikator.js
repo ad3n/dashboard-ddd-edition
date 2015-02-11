@@ -48,3 +48,22 @@ Chart.indikatorListClickHandler = function (indikators) {
         Chart.buildIndikatorList(indikators, Chart.perPage, Chart.page);
     });
 };
+
+Chart.createGlobalIndikatorChart = function (indikator) {
+    Chart.requestGlobal(function (data) {
+        var chart = Chart.processDataGlobal(data);
+
+        Chart.category([chart['data']], '#block6', data['indikator']['name'], null, chart['indikator'], 'bar', {
+            click: function (e) {
+                Chart.request(function (data) {
+                    Chart.createColumn({
+                        click: function (e) {
+                            alert('Under Constructions.');
+                        }
+                    }, data, '#block5', data['indikator']['name']);
+                }, this.category, 'nasional');
+            }
+        });
+
+    }, indikator, 'nasional');
+};

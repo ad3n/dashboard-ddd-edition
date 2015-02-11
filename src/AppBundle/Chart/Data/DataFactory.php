@@ -5,22 +5,22 @@ namespace AppBundle\Chart\Data;
 
 class DataFactory implements DataFactoryInterface
 {
-    protected $dataProccessor;
+    protected $dataProcessor;
 
     /**
-     * @param DataProccessorInterface $dataProccessor
+     * @param DataProcessorInterface $dataProcessor
      */
-    public function addDataProccessor(DataProccessorInterface $dataProccessor)
+    public function addDataProcessor(DataProcessorInterface $dataProcessor)
     {
-        $this->dataProccessor[$dataProccessor->getName()] = $dataProccessor;
+        $this->dataProcessor[$dataProcessor->getName()] = $dataProcessor;
     }
 
     /**
      * @param $name
-     * @return DataProccessorInterface
+     * @return DataProcessorInterface
      */
-    public function createDataProccessor($name)
+    public function createDataProcessor($name)
     {
-        return $this->dataProccessor[$name];
+        return $this->dataProcessor[$name];
     }
 }

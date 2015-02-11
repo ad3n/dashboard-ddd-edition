@@ -3,9 +3,9 @@
 namespace AppBundle\Data;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Chart\Data\DoctrineDataProccessor;
+use AppBundle\Chart\Data\DoctrineDataProcessor;
 
-class KabupatenDataProccessor extends DoctrineDataProccessor
+class KabupatenDataProcessor extends DoctrineDataProcessor
 {
     public function __construct(ObjectManager $objectManager, $class)
     {

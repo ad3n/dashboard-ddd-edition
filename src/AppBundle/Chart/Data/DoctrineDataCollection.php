@@ -7,7 +7,7 @@ use AppBundle\Chart\ChartIndicatorInterface;
 class DoctrineDataCollection implements DataCollectionInterface
 {
     /**
-     * @var DataProccessorInterface
+     * @var DataProcessorInterface
      */
     protected $proccessor;
 
@@ -31,14 +31,14 @@ class DoctrineDataCollection implements DataCollectionInterface
      */
     protected $indicator;
 
-    public function __construct(DataProccessorInterface $proccessor = null)
+    public function __construct(DataProcessorInterface $proccessor = null)
     {
         if ($proccessor) {
-            $this->setProccessor($proccessor);
+            $this->setProcessor($proccessor);
         }
     }
 
-    public function setProccessor(DataProccessorInterface $proccessor)
+    public function setProcessor(DataProcessorInterface $proccessor)
     {
         $this->proccessor = $proccessor;
 

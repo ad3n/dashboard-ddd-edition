@@ -4,7 +4,7 @@ namespace AppBundle\Chart\Data;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
-abstract class DoctrineDataProccessor implements DataProccessorInterface
+abstract class DoctrineDataProcessor implements DataProcessorInterface
 {
     /**
      * @var \Doctrine\Common\Persistence\ObjectRepository

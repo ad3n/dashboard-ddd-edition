@@ -11,15 +11,15 @@ class ChartCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        $dataProccessorFactoryDefinition = new Definition('AppBundle\Chart\Data\DataFactory');
-        if (! $container->hasDefinition('app.chart.data.proccessor_factory')) {
-            $container->setDefinition('app.chart.data.proccessor_factory', $dataProccessorFactoryDefinition);
+        $dataProcessorFactoryDefinition = new Definition('AppBundle\Chart\Data\DataFactory');
+        if (! $container->hasDefinition('app.chart.data.processor_factory')) {
+            $container->setDefinition('app.chart.data.processor_factory', $dataProcessorFactoryDefinition);
         }
 
-        $dataProccessors = $container->findTaggedServiceIds('app.chart.data.proccessor');
+        $dataProcessors = $container->findTaggedServiceIds('app.chart.data.processor');
 
-        foreach ($dataProccessors as $id => $tags) {
-            $dataProccessorFactoryDefinition->addMethodCall('addDataProccessor', array(new Reference($id)));
+        foreach ($dataProcessors as $id => $tags) {
+            $dataProcessorFactoryDefinition->addMethodCall('addDataProcessor', array(new Reference($id)));
         }
     }
 }

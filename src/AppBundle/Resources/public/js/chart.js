@@ -64,7 +64,6 @@ Chart.createPie = function (data, seletor, title, handler) {
 
 Chart.createBar = function (handler, data, selector, title) {
     var output = Chart.processDataPerBulan(data);
-    console.log(data);
 
     Chart.category(output, output['total'], selector, title, Chart.BulanIndonesia, 'bar', handler);
 };
@@ -87,26 +86,26 @@ Chart.createArea = function (handler, data, selector, title) {
     Chart.category(output, output['total'], selector, title, Chart.BulanIndonesia, 'area', handler);
 };
 
-Chart.createMainChart = function (indikator, start) {
+Chart.createMainChart = function (indikator) {
     Chart.request(function (data) {
         Chart.createColumn({
             click: function (e) {
                 alert('Under Constructions.');
             }
-        }, data, '#main', data['indikator']['name']);
+        }, data, '#main-block', data['indikator']['name']);
 
-        Chart.createGlobalIndikatorChart(indikator);
+        //Chart.createIndicatorListChart(indikator);
     }, indikator, 'nasional');
 };
 
-Chart.createGlobalIndikatorChart = function (indikator) {
+Chart.createIndicatorListChart = function (indikator) {
     Chart.request(function (data) {
         var chart = Chart.processDataGlobal(data);
 
-        Chart.buildCategoryChart([chart['data']], '#block6', data['indikator']['name'], null, chart['indikator'], 'bar', {
+        Chart.category([chart['data']], '#block6', data['indikator']['name'], null, chart['indikator'], 'bar', {
             click: function (e) {
                 Chart.request(function (data) {
-                    Chart.createColumnChart({
+                    Chart.createColumn({
                         click: function (e) {
                             alert('Under Constructions.');
                         }

@@ -29,9 +29,9 @@ class ChartApiController extends  Controller
      */
     public function getAction($indikator, $scope, $kode, $dari, $sampai)
     {
-        $proccessor = $this->container->get('app.chart.data.proccessor_factory')->createDataProccessor($scope);
+        $proccessor = $this->container->get('app.chart.data.processor_factory')->createDataProcessor($scope);
         $dataCollection = $this->container->get('app.chart.data.doctrine_collection');
-        $dataCollection->setProccessor($proccessor);
+        $dataCollection->setProcessor($proccessor);
         $dataCollection->setIndicator($this->getDoctrine()->getRepository('AppBundle:Indikator')->findOneBy(array('code' => $indikator)));
 
         $criteria = array();

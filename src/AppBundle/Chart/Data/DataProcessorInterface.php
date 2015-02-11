@@ -3,7 +3,7 @@
 namespace AppBundle\Chart\Data;
 
 
-interface DataProccessorInterface
+interface DataProcessorInterface
 {
     public function getName();
 

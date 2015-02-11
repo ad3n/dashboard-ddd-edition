@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\IndikatorRepository")
  * @ORM\Table(name="indikator")
  **/
 class Indikator implements ChartIndicatorInterface

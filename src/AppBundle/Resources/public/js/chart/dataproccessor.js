@@ -53,26 +53,29 @@ Chart.processDataGlobal = function (data) {
     var output = [];
     output['indikator'] = [];
     output['data'] = [];
-    output['data']['name'] = 'Data';
+    output['data']['name'] = 'Indikator List';
     output['data']['data'] = [];
+    output['data']['total'] = 0;
+    output['data']['year'] = null;
     var total = 0;
 
-    jQuery.each(data['indikator']['child'], function (key, value) {
-        output['indikator'].push(value.code);
-    });
+    jQuery.each(data, function (key, value) {
+        output['indikator'].push(value.indikator.code);
+        output['data']['data'][key] = 0;
 
-    jQuery.each(data['data'], function (key, value) {
-        var data = 0;
-        jQuery.each(value, function (k, v) {
+        jQuery.each(value.data, function (k, v) {
+            if (null === output['data']['year']) {
+                output['data']['year'] = k;
+            }
+
             total = Object.keys(v).length;
-            jQuery.each(v, function (y, z) {
-                if ('undefined' !== typeof z['value']) {
-                    data = data + parseInt(z['value']);
-                }
+            jQuery.each(v, function (x, y) {
+                output['data']['data'][key] = output['data']['data'][key] + parseInt(y.value);
+                output['data']['total'] = output['data']['total'] + parseInt(y.nominator);
             });
         });
 
-        output['data']['data'].push(Math.round(data / total));
+        output['data']['data'][key] = Math.round(output['data']['data'][key] / total);
     });
 
     return output;

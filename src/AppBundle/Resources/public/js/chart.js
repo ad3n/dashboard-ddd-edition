@@ -87,29 +87,29 @@ Chart.createArea = function (handler, data, selector, title) {
 };
 
 Chart.createMainChart = function (indikator) {
-    Chart.request(function (data) {
+    Chart.get(function (data) {
         Chart.createColumn({
             click: function (e) {
                 alert('Under Constructions.');
             }
         }, data, '#main-block', data['indikator']['name']);
 
-        //Chart.createIndicatorListChart(indikator);
+        Chart.createIndicatorListChart(indikator);
     }, indikator, 'nasional');
 };
 
 Chart.createIndicatorListChart = function (indikator) {
-    Chart.request(function (data) {
+    Chart.getIndikator(function (data) {
         var chart = Chart.processDataGlobal(data);
 
-        Chart.category([chart['data']], '#block6', data['indikator']['name'], null, chart['indikator'], 'bar', {
+        Chart.category([chart['data']], chart['data']['total'], '#indicator-block', '', chart['indikator'], 'bar', {
             click: function (e) {
-                Chart.request(function (data) {
+                Chart.get(function (data) {
                     Chart.createColumn({
                         click: function (e) {
                             alert('Under Constructions.');
                         }
-                    }, data, '#block5', data['indikator']['name']);
+                    }, data, '#main-block', data['indikator']['name']);
                 }, this.category, 'nasional');
             }
         });

@@ -1,4 +1,4 @@
-Chart.request = function (callback, indikator, scope, kode, tahun, bulan) {
+Chart.get = function (callback, indikator, scope, kode, tahun, bulan) {
     if ("undefined" === typeof scope) {
         scope = '0';
     }
@@ -15,8 +15,32 @@ Chart.request = function (callback, indikator, scope, kode, tahun, bulan) {
         bulan = '0';
     }
 
+    Chart.request(callback, '/api/chart/get/' + indikator + '/' + scope + '/' + kode + '/' + tahun + '/' + bulan);
+};
+
+Chart.getIndikator = function (callback, indikator, scope, kode, tahun, bulan) {
+    if ("undefined" === typeof scope) {
+        scope = '0';
+    }
+
+    if ("undefined" === typeof kode) {
+        kode = '0';
+    }
+
+    if ("undefined" === typeof tahun) {
+        tahun = '0';
+    }
+
+    if ("undefined" === typeof bulan) {
+        bulan = '0';
+    }
+
+    Chart.request(callback, '/api/chart/get_by_parent/' + indikator + '/' + scope + '/' + kode + '/' + tahun + '/' + bulan);
+};
+
+Chart.request = function (callback, url) {
     jQuery.ajax({
-        url: '/api/chart/get/' + indikator + '/' + scope + '/' + kode + '/' + tahun + '/' + bulan,
+        url: url,
         type:'GET',
         dataType: 'json',
         beforeSend: function( xhr ) {

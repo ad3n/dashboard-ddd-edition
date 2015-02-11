@@ -103,7 +103,7 @@
         jQuery(document).ready(function () {
 
             //Eary Warning
-            Chart.request(function (data) {
+            Chart.get(function (data) {
                 Chart.createGauge(data, '#block1', data['indikator']['name'], {
                     click: function (e) {
                         alert('Under Constructions.');
@@ -111,7 +111,7 @@
                 });
             }, 'PS01', 'nasional');
 
-            Chart.request(function (data) {
+            Chart.get(function (data) {
                 Chart.createGauge(data, '#block2', data['indikator']['name'], {
                     click: function (e) {
                         alert('Under Constructions.');
@@ -119,7 +119,7 @@
                 });
             }, 'PS02', 'nasional', 0, '01_2015', '12_2015');
 
-            Chart.request(function (data) {
+            Chart.get(function (data) {
                 Chart.createGauge(data, '#block3', data['indikator']['name'], {
                     click: function (e) {
                         alert('Under Constructions.');
@@ -127,7 +127,7 @@
                 });
             }, 'PS03', 'nasional');
 
-            Chart.request(function (data) {
+            Chart.get(function (data) {
                 Chart.createGauge(data, '#block4', data['indikator']['name'], {
                     click: function (e) {
                         alert('Under Constructions.');
@@ -135,7 +135,7 @@
                 });
             }, 'PS04', 'nasional');
 
-            Chart.request(function (data) {
+            Chart.get(function (data) {
                 Chart.createGauge(data, '#block5', data['indikator']['name'], {
                     click: function (e) {
                         alert('Under Constructions.');
@@ -143,7 +143,7 @@
                 });
             }, 'PS05', 'nasional');
 
-            Chart.request(function (data) {
+            Chart.get(function (data) {
                 Chart.createGauge(data, '#block6', data['indikator']['name'], {
                     click: function (e) {
                         alert('Under Constructions.');
@@ -158,21 +158,29 @@
             Chart.createMainChart('PS07');
 
             //Bottom Chart
-            Chart.request(function (data) {
-                Chart.createGauge(data, '#block7', data['indikator']['name'], {
+            Chart.get(function (data) {
+                Chart.createPie(data, '#block8', data['indikator']['name'], {
                     click: function (e) {
                         alert('Under Constructions.');
                     }
                 });
-            }, 'PS07', 'nasional');
+            }, 'PS04', 'nasional');
 
-            Chart.request(function (data) {
-                Chart.createGauge(data, '#block8', data['indikator']['name'], {
+            Chart.get(function (data) {
+                Chart.createPie(data, '#block9', data['indikator']['name'], {
                     click: function (e) {
                         alert('Under Constructions.');
                     }
                 });
-            }, 'PS08', 'nasional');
+            }, 'PS05', 'nasional');
+
+            Chart.get(function (data) {
+                Chart.createPie(data, '#block10', data['indikator']['name'], {
+                    click: function (e) {
+                        alert('Under Constructions.');
+                    }
+                });
+            }, 'PS06', 'nasional');
         });
     </script>
 {% endblock %}

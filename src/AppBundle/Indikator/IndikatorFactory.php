@@ -18,21 +18,22 @@ class IndikatorFactory implements IndikatorFactoryInterface
         $code = substr($indicatorCode, -1, 2);
 
         if ('00' === $code) {
-            $this->childIndicatorProcessor($indicatorCode);
+
+            return $this->childIndicatorProcessor($indicatorCode);
         } else {
             $prefix = substr($indicatorCode, 0, 2);
             $indicatorCode = sprintf('%s00', $prefix);
 
-            $this->parentIndicatorProcessor($indicatorCode);
+            return $this->parentIndicatorProcessor($indicatorCode);
         }
     }
 
-    public function childIndicatorProcessor($indicatorCode)
+    private function childIndicatorProcessor($indicatorCode)
     {
         return $this->repository->findOneBy(array('code' => $indicatorCode));
     }
 
-    public function parentIndicatorProcessor($indcatorCode)
+    private function parentIndicatorProcessor($indcatorCode)
     {
         return $this->repository->getChildIndikatorByParentCode($indcatorCode);
     }

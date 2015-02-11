@@ -26,7 +26,7 @@ class Chart implements ChartInterface
     /**
      * @var array
      */
-    protected $data;
+    protected $data = array();
 
     /**
      * @var ChartIndicatorInterface

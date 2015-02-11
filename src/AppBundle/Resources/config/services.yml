@@ -1,0 +1,54 @@
+parameters:
+  app.data.class: AppBundle\Entity\Data
+
+services:
+  app.chart.proccessor.nasional:
+    class: AppBundle\Data\NasionalDataProccessor
+    arguments:
+      - @doctrine.orm.entity_manager
+      - %app.data.class%
+    tags:
+      - { name: app.chart.data.proccessor }
+
+  app.chart.proccessor.propinsi:
+    class: AppBundle\Data\PropinsiDataProccessor
+    arguments:
+      - @doctrine.orm.entity_manager
+      - %app.data.class%
+    tags:
+      - { name: app.chart.data.proccessor }
+
+  app.chart.proccessor.kabupaten:
+    class: AppBundle\Data\KabupatenDataProccessor
+    arguments:
+      - @doctrine.orm.entity_manager
+      - %app.data.class%
+    tags:
+      - { name: app.chart.data.proccessor }
+
+  app.chart.proccessor.kecamatan:
+    class: AppBundle\Data\KecamatanDataProccessor
+    arguments:
+      - @doctrine.orm.entity_manager
+      - %app.data.class%
+    tags:
+      - { name: app.chart.data.proccessor }
+
+  app.chart.proccessor.kelurahan:
+    class: AppBundle\Data\KelurahanDataProccessor
+    arguments:
+      - @doctrine.orm.entity_manager
+      - %app.data.class%
+    tags:
+      - { name: app.chart.data.proccessor }
+
+  app.chart.proccessor.regional:
+    class: AppBundle\Data\RegionalDataProccessor
+    arguments:
+      - @doctrine.orm.entity_manager
+      - %app.data.class%
+    tags:
+      - { name: app.chart.data.proccessor }
+
+  app.chart.data.doctrine_collection:
+    class: AppBundle\Chart\Data\DoctrineDataCollection

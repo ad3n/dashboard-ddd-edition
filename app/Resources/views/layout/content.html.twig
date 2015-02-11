@@ -1,0 +1,17 @@
+{% spaceless %}
+<div id="main" role="main">
+    <div id="ribbon">
+        <ol class="breadcrumb">
+            <li>Home</li>
+            {% if breadcrumb is not empty %}
+                {{ breadcrumb | raw }}
+            {% endif %}
+        </ol>
+    </div>
+    <div id="content">
+        {% if content is not empty %}
+            {{ content | raw }}
+        {% endif %}
+    </div>
+</div>
+{% endspaceless %}

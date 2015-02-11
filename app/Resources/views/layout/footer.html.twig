@@ -1,0 +1,50 @@
+{% spaceless %}
+    <div class="page-footer">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <span class="txt-color-white">{{ title }} &copy; 2014-{{ date().format('Y') }}</span>
+            </div>
+        </div>
+    </div>
+
+    <script data-pace-options='{ "restartOnRequestAfter": true }' src="{{ asset('bundles/app/js/plugin/pace/pace.min.js') }}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="{{ asset('bundles/app/js/libs/jquery-2.0.2.min.js') }}"><\/script>');
+        }
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script>
+        if (!window.jQuery.ui) {
+            document.write('<script src="{{ asset('bundles/app/js/libs/jquery-ui-1.10.3.min.js') }}"><\/script>');
+        }
+    </script>
+
+    {% javascripts
+        '@AppBundle/Resources/public/js/app.config.js'
+        '@AppBundle/Resources/public/js/bootstrap/bootstrap.min.js'
+        '@AppBundle/Resources/public/js/notification/SmartNotification.min.js'
+        '@AppBundle/Resources/public/js/smartwidgets/jarvis.widget.min.js'
+        '@AppBundle/Resources/public/js/plugin/jquery-validate/jquery.validate.min.js'
+        '@AppBundle/Resources/public/js/plugin/masked-input/jquery.maskedinput.min.js'
+        '@AppBundle/Resources/public/js/plugin/msie-fix/jquery.mb.browser.min.js'
+        '@AppBundle/Resources/public/js/plugin/fastclick/fastclick.min.js'
+        '@AppBundle/Resources/public/js/plugin/keen-dashboard/dist/keen.min.js'
+        '@AppBundle/Resources/public/js/app.min.js'
+
+        filter='closure'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% if javascript is not empty %}
+        {{ javascript | raw }}
+    {% endif %}
+
+    <!--[if IE 8]>
+
+    <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+    <![endif]-->
+{% endspaceless %}

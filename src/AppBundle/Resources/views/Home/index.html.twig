@@ -1,0 +1,177 @@
+{% extends 'AppBundle:Layout:chart_layout.html.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <div id="block1" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div id="block2" class="chart-wrapper ">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div id="block3" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div id="block4" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div id="block5" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div id="block6" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <div id="main-block" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div id="indicator-block" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div id="block7" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div id="block8" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div id="block9" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div id="block10" class="chart-wrapper">
+                <div class="chart-title"></div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            Chart.request(function (data) {
+                Chart.createGauge(data, '#block1', data['indikator']['name'], {
+                    click: function (e) {
+                        alert('Under Constructions.');
+                    }
+                });
+            }, 'PS01', 'nasional');
+
+            Chart.request(function (data) {
+                Chart.createGauge(data, '#block2', data['indikator']['name'], {
+                    click: function (e) {
+                        alert('Under Constructions.');
+                    }
+                });
+            }, 'PS02', 'nasional', 0, '01_2015', '12_2015');
+
+            Chart.request(function (data) {
+                Chart.createGauge(data, '#block3', data['indikator']['name'], {
+                    click: function (e) {
+                        alert('Under Constructions.');
+                    }
+                });
+            }, 'PS03', 'nasional');
+
+            Chart.request(function (data) {
+                Chart.createPie(data, '#block4', data['indikator']['name'], {
+                    click: function (e) {
+                        alert('Under Constructions.');
+                    }
+                });
+            }, 'PS04', 'nasional');
+
+            Chart.request(function (data) {
+                Chart.createGauge(data, '#block5', data['indikator']['name'], {
+                    click: function (e) {
+                        alert('Under Constructions.');
+                    }
+                });
+            }, 'PS05', 'nasional');
+
+            Chart.request(function (data) {
+                Chart.createGauge(data, '#block6', data['indikator']['name'], {
+                    click: function (e) {
+                        alert('Under Constructions.');
+                    }
+                });
+            }, 'PS06', 'nasional');
+
+            Chart.request(function (data) {
+                Chart.createGauge(data, '#block7', data['indikator']['name'], {
+                    click: function (e) {
+                        alert('Under Constructions.');
+                    }
+                });
+            }, 'PS07', 'nasional');
+
+            Chart.request(function (data) {
+                Chart.createGauge(data, '#block8', data['indikator']['name'], {
+                    click: function (e) {
+                        alert('Under Constructions.');
+                    }
+                });
+            }, 'PS08', 'nasional');
+
+            Chart.request(function (data) {
+                Chart.createBar({
+                    click: function (e) {
+                        alert('Under Constructions.');
+                    }
+                }, data, '#main-block', data['indikator']['name']);
+            }, 'PS09', 'nasional');
+        });
+    </script>
+{% endblock %}

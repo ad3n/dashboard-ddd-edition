@@ -1,0 +1,21 @@
+.logo {
+    height: 33px !important;
+}
+
+.grid-3{
+    height: 600px !important;
+    max-height: 600px !important;
+    min-height: 600px !important;
+}
+
+.grid-2 {
+    height: 295px !important;
+    max-height: 295px !important;
+    min-height: 295px !important;
+}
+
+.grid-1 {
+    height: 193px !important;
+    max-height: 193px !important;
+    min-height: 193px !important;
+}

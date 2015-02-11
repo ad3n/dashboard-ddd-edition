@@ -1,0 +1,14 @@
+{% spaceless %}
+    <!DOCTYPE html>
+    <html lang="en-us">
+        <head>
+            {% include ':layout:header.html.twig' with { page_title: block('page_title'), css: block('css') } %}
+        </head>
+        <body class="menu-on-top fixed-navigation fixed-header fixed-ribbon">
+            {% include ':layout:navigation_header.html.twig' with { logo: block('logo'), widget: block('widget'), user_panel: block('user_panel') } %}
+            {% include ':layout:navigation_main.html.twig' %}
+            {% include ':layout:content.html.twig' with { breadcrumb: block('breadcrumb'), content: block('content') } %}
+            {% include ':layout:footer.html.twig' with { javascript: block('javascript') } %}
+        </body>
+    </html>
+{% endspaceless %}

@@ -90,7 +90,7 @@ Chart.createMainChart = function (indikator) {
     Chart.get(function (data) {
         Chart.createColumn({
             click: function (e) {
-                alert('Under Constructions.');
+                Chart.getDetailChart(this.category, data);
             }
         }, data, '#main-block', data['indikator']['name']);
 
@@ -107,7 +107,7 @@ Chart.createIndicatorListChart = function (indikator) {
                 Chart.get(function (data) {
                     Chart.createColumn({
                         click: function (e) {
-                            alert('Under Constructions.');
+                            Chart.getDetailChart(this.category, data);
                         }
                     }, data, '#main-block', data['indikator']['name']);
                 }, this.category, 'nasional');
@@ -117,13 +117,24 @@ Chart.createIndicatorListChart = function (indikator) {
     }, indikator, 'nasional');
 };
 
-Chart.modalHelper = Chart.modalHelper || (function () {
-    return {
-        pleaseWait: function() {
-            jQuery('#loader').show();
-        },
-        done: function () {
-            jQuery('#loader').hide();
-        }
-    };
-})();
+Chart.getDetailChart = function (bulan, data) {
+    var now = new Date();
+    var dari = '0';
+    var sampai = '0';
+
+    var dariBulan = '' === jQuery("#dari-bulan").val() ? null: jQuery("#dari-bulan").val();
+    if (dariBulan) {
+        var dariTahun = '' === jQuery("#dari-tahun").val() ? now.getFullYear(): jQuery("#dari-tahun").val();
+        dari = dariBulan + '_' + dariTahun;
+    }
+
+    var sampaiBulan = '' === jQuery("#sampai-bulan").val() ? null: jQuery("#sampai-bulan").val();
+    if (sampaiBulan) {
+        var sampaiTahun = '' === jQuery("#sampai-tahun").val() ? now.getFullYear(): jQuery("#sampai-tahun").val();
+        sampai = sampaiBulan + '_' + sampaiTahun;
+    }
+
+    var key = jQuery.inArray(bulan, Chart.BulanIndonesia);
+
+    Chart.getDetail(key + 1, data['scope'], data['indikator']['code'], dari, sampai);
+};

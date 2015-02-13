@@ -1,4 +1,4 @@
-Chart.get = function (callback, indikator, scope, kode, tahun, bulan) {
+Chart.get = function (callback, indikator, scope, kode, dari, sampai) {
     if ("undefined" === typeof scope) {
         scope = '0';
     }
@@ -7,18 +7,18 @@ Chart.get = function (callback, indikator, scope, kode, tahun, bulan) {
         kode = '0';
     }
 
-    if ("undefined" === typeof tahun) {
-        tahun = '0';
+    if ("undefined" === typeof dari) {
+        dari = '0';
     }
 
-    if ("undefined" === typeof bulan) {
-        bulan = '0';
+    if ("undefined" === typeof sampai) {
+        sampai = '0';
     }
 
-    Chart.request(callback, '/api/chart/get/' + indikator + '/' + scope + '/' + kode + '/' + tahun + '/' + bulan);
+    Chart.request(callback, '/api/chart/get/' + indikator + '/' + scope + '/' + kode + '/' + dari + '/' + sampai);
 };
 
-Chart.getIndikator = function (callback, indikator, scope, kode, tahun, bulan) {
+Chart.getIndikator = function (callback, indikator, scope, kode, dari, sampai) {
     if ("undefined" === typeof scope) {
         scope = '0';
     }
@@ -27,28 +27,28 @@ Chart.getIndikator = function (callback, indikator, scope, kode, tahun, bulan) {
         kode = '0';
     }
 
-    if ("undefined" === typeof tahun) {
-        tahun = '0';
+    if ("undefined" === typeof dari) {
+        dari = '0';
     }
 
-    if ("undefined" === typeof bulan) {
-        bulan = '0';
+    if ("undefined" === typeof sampai) {
+        sampai = '0';
     }
 
-    Chart.request(callback, '/api/chart/get_by_parent/' + indikator + '/' + scope + '/' + kode + '/' + tahun + '/' + bulan);
+    Chart.request(callback, '/api/chart/get_by_parent/' + indikator + '/' + scope + '/' + kode + '/' + dari + '/' + sampai);
+};
+
+Chart.getDetail = function (indikator, scope, kode, dari, sampai) {
+    Chart.request(null, '/api/chart/detail/' + indikator + '/' + scope + '/' + kode + '/' + dari + '/' + sampai);
 };
 
 Chart.request = function (callback, url) {
     jQuery.ajax({
         url: url,
         type:'GET',
-        dataType: 'json',
-        beforeSend: function( xhr ) {
-            Chart.modalHelper.pleaseWait();
-        }
+        dataType: 'json'
     }).done (function (response) {
         if ('function' === typeof callback) {
-            Chart.modalHelper.done();
             callback(response);
         }
     });

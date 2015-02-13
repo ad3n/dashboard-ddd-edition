@@ -1,24 +1,3 @@
-Chart.processDataPerTahun = function (data) {
-    var output = [];
-    output['tahun'] = [];
-    output['data'] = [];
-    output['data']['name'] = 'Total';
-    output['data']['data'] = [];
-
-    jQuery.each(data['data'], function (key, value) {
-        output['tahun'].push(key);
-        var data = 0;
-
-        jQuery.each(value, function (k, v) {
-            data = data + parseInt(v['value']);
-        });
-
-        output['data']['data'].push(data);
-    });
-
-    return output;
-};
-
 Chart.processDataPerBulan = function (data, type) {
     Chart.scope = data['scope'];
     var output = [];

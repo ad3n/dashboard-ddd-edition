@@ -90,7 +90,7 @@ Chart.createMainChart = function (indikator) {
     Chart.get(function (data) {
         Chart.createColumn({
             click: function (e) {
-                Chart.getDetailChart(this.category, data);
+                Chart.getDetailChart(indikator, this.category, this.series.name, data);
             }
         }, data, '#main-block', data['indikator']['name']);
 
@@ -104,20 +104,21 @@ Chart.createIndicatorListChart = function (indikator) {
 
         Chart.category([chart['data']], chart['data']['total'], '#indicator-block', '', chart['indikator'], 'bar', {
             click: function (e) {
+                var category = this.category;
                 Chart.get(function (data) {
                     Chart.createColumn({
                         click: function (e) {
-                            Chart.getDetailChart(this.category, data);
+                            Chart.getDetailChart(category, this.category, this.series.name, data);
                         }
                     }, data, '#main-block', data['indikator']['name']);
-                }, this.category, 'nasional');
+                }, category, 'nasional');
             }
         });
 
     }, indikator, 'nasional');
 };
 
-Chart.getDetailChart = function (bulan, data) {
+Chart.getDetailChart = function (indikator, bulan, tahun, data) {
     var now = new Date();
     var dari = '0';
     var sampai = '0';
@@ -136,5 +137,5 @@ Chart.getDetailChart = function (bulan, data) {
 
     var key = jQuery.inArray(bulan, Chart.BulanIndonesia);
 
-    Chart.getDetail(key + 1, data['scope'], data['indikator']['code'], dari, sampai);
+    Chart.getDetail(indikator, data['scope'], data['indikator']['code'], dari, sampai);
 };

@@ -124,4 +124,57 @@ class ChartApiController extends  Controller
 
         return new JsonResponse($output);
     }
+
+    /**
+     * @Route("/detail/{indikator}/{scope}/{kode}/{dari}/{sampai}"
+     * , name="api_chart_detail"
+     * , defaults={"scope" = "nasional", "kode" = "0", "dari" = "0", "sampai" = "0"}
+     * )
+     * @Method("GET")
+     *
+     * @param string $indikator
+     * @param string $scope
+     * @param string $kode
+     * @param integer $dari
+     * @param integer $sampai
+     * @return JsonResponse
+     */
+    public function getDetailAction($indikator, $scope, $kode, $dari, $sampai)
+    {
+        $proccessor = $this->container->get('app.chart.data.processor_factory')->createDataProcessor($scope);
+        $dataCollection = $this->container->get('app.chart.data.doctrine_collection');
+        $dataCollection->setProcessor($proccessor);
+        $dataCollection->setIndicator($this->getDoctrine()->getRepository('AppBundle:Indikator')->findOneBy(array('code' => $indikator)));
+
+        $criteria = array();
+        $from = new \DateTime();
+        $from->setDate($from->format('Y'), 1, 1);
+        $to = new \DateTime();
+        $to->setDate($to->format('Y'), 12, 31);
+
+        if ('nasional' !== $scope && '0' !== $kode) {
+            $criteria[$scope] = $kode;
+        }
+
+        if ('0' !== $dari) {
+            $from = \DateTime::createFromFormat('m_Y', $dari);
+            $to = \DateTime::createFromFormat('m_Y', $sampai);
+        }
+
+        $dataCollection->setFilter($from, $to, $criteria);
+
+        $chart = new Chart();
+        $chart->setData($dataCollection);
+        $indicator = $chart->getIndicator();
+
+        $output['indikator']['code'] = $indicator->getCredential();
+        $output['indikator']['name'] = $indicator->getChartTitle();
+        $output['indikator']['merah'] = $indicator->getRedIndicator();
+        $output['indikator']['kuning'] = $indicator->getYellowIndicator();
+        $output['indikator']['hijau'] = $indicator->getGreenIndicator();
+        $output['scope'] = $chart->getScope();
+        $output['data'] = $chart->getData();
+
+        return $this->render('@App/Home/detail.html.twig', array('chart' => $output));
+    }
 }

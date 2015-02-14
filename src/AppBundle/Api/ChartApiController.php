@@ -175,6 +175,6 @@ class ChartApiController extends  Controller
         $output['scope'] = $chart->getScope();
         $output['data'] = $chart->getData();
 
-        return $this->render('@App/Home/detail.html.twig', array('chart' => $output));
+        return $this->render('AppBundle:Home:detail.html.twig', array('chart' => $output));
     }
 }

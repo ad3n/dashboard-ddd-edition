@@ -6,6 +6,7 @@ Chart.processDataPerBulan = function (data, type) {
 
     jQuery.each(data['data'], function (key, value) {
         var data = [];
+        var nominal = [];
         output[i] = [];
 
         output[i]['name'] = key;
@@ -14,6 +15,7 @@ Chart.processDataPerBulan = function (data, type) {
         jQuery.each(value, function (k, v) {
             if ('undefined' !== typeof v['value']) {
                 data.push(parseInt(v['value']));
+                nominal.push(parseInt(v['nominator']));
                 output['total'] = output['total'] + parseInt(v['nominator']);
             } else {
                 data.push(0);
@@ -21,6 +23,7 @@ Chart.processDataPerBulan = function (data, type) {
         });
 
         output[i]['data'] = data;
+        output[i]['nominal'] = nominal;
 
         i++;
     });

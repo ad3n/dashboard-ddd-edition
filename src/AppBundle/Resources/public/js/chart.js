@@ -50,7 +50,7 @@ Chart.createPie = function (data, seletor, title, handler) {
     var output = [];
     var total = 0;
 
-    jQuery.each(temp[0]['data'], function (key, value) {
+    jQuery.each(temp[0]['nominal'], function (key, value) {
         output.push([Chart.BulanIndonesia[key], value]);
         total = total + value;
     });

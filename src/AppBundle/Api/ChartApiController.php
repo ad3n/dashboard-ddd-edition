@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use AppBundle\Chart\Chart;
-use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * @Route("/chart")

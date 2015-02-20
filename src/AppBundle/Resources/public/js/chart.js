@@ -118,24 +118,24 @@ Chart.createIndicatorListChart = function (indikator) {
     }, indikator, 'nasional');
 };
 
-Chart.getDetailChart = function (indikator, bulan, tahun, data) {
+Chart.getDetailChart = function (indikator, bulan, kode, data) {
     var now = new Date();
     var dari = '0';
     var sampai = '0';
+    bulan = jQuery.inArray(bulan, Chart.BulanIndonesia);
+    bulan++;
 
-    var dariBulan = '' === jQuery("#dari-bulan").val() ? null: jQuery("#dari-bulan").val();
+    var dariBulan = '' === jQuery("#dari-bulan").val() ? bulan: jQuery("#dari-bulan").val();
     if (dariBulan) {
         var dariTahun = '' === jQuery("#dari-tahun").val() ? now.getFullYear(): jQuery("#dari-tahun").val();
         dari = dariBulan + '_' + dariTahun;
     }
 
-    var sampaiBulan = '' === jQuery("#sampai-bulan").val() ? null: jQuery("#sampai-bulan").val();
+    var sampaiBulan = '' === jQuery("#sampai-bulan").val() ? bulan: jQuery("#sampai-bulan").val();
     if (sampaiBulan) {
         var sampaiTahun = '' === jQuery("#sampai-tahun").val() ? now.getFullYear(): jQuery("#sampai-tahun").val();
         sampai = sampaiBulan + '_' + sampaiTahun;
     }
 
-    var key = jQuery.inArray(bulan, Chart.BulanIndonesia);
-
-    Chart.getDetail(indikator, data['scope'], data['indikator']['code'], dari, sampai);
+    Chart.getDetail(indikator, data['scope'], bulan, dari, sampai);
 };

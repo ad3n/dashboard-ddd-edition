@@ -81,6 +81,8 @@ class Block implements BlockInterface
     public function setLocation($blockLocation)
     {
         $location = array(
+            BlockLocation::MAP_BLOCK,
+            BlockLocation::MAP_INFO_BLOCK,
             BlockLocation::TOP_BLOCK_1,
             BlockLocation::TOP_BLOCK_2,
             BlockLocation::TOP_BLOCK_3,

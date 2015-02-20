@@ -3,7 +3,7 @@
 namespace CleanCrudBundle\Entity;
 
 
-interface EntityCollectionInterface
+interface EntityFactoryInterface
 {
     public function addEntity($entity);
 

@@ -139,3 +139,38 @@ Chart.getDetailChart = function (indikator, bulan, kode, data) {
 
     Chart.getDetail(indikator, data['scope'], bulan, dari, sampai);
 };
+
+Chart.init = function () {
+    var bulan = ['JANUARI', 'FEBRUARI', 'MARET', 'APRIL', 'MEI', 'JUNI', 'JULI', 'AGUSTUS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DESEMBER'];
+    var now = new Date();
+
+    for (var i = 2014; i <= now.getFullYear(); i++) {
+        jQuery('#dari-tahun').append(jQuery("<option></option>").attr("value", i).text(i));
+        jQuery('#sampai-tahun').append(jQuery("<option></option>").attr("value", i).text(i));
+    }
+
+    for (var i = 0; i <= bulan.length - 1; i++) {
+        jQuery('#dari-bulan').append(jQuery("<option></option>").attr("value", i + 1 ).text(bulan[i]));
+        jQuery('#sampai-bulan').append(jQuery("<option></option>").attr("value", i + 1 ).text(bulan[i]));
+    }
+
+    jQuery('#wilayah').autocomplete({
+        source: function (request, response) {
+            if (request.term >= 3) {
+                Chart.request(function (result) {
+                    response(result);
+                }, '/api/wilayah/get_like/' + request.term);
+            }
+        }
+    });
+
+    jQuery('#regional').autocomplete({
+        source: function (request, response) {
+            if (request.term >= 3) {
+                Chart.request(function (result) {
+                    response(result);
+                }, '/api/regional/get_like/' + request.term);
+            }
+        }
+    });
+};

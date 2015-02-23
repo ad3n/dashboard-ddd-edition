@@ -28,17 +28,17 @@ class Block implements BlockInterface
     protected $user;
 
     /**
-     * @ORM\Column(name="code_indikator", type="string", length=4, unique=true)
+     * @ORM\Column(name="code_indikator", type="string", length=4)
      **/
     protected $indicator;
 
     /**
-     * @ORM\Column(name="chart_type", type="string", length=10, unique=true)
+     * @ORM\Column(name="chart_type", type="string", length=10)
      **/
     protected $blockType;
 
     /**
-     * @ORM\Column(name="location", type="string", length=17, unique=true)
+     * @ORM\Column(name="location", type="string", length=17)
      **/
     protected $location;
 

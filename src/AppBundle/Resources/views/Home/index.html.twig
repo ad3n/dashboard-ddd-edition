@@ -3,15 +3,11 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="row">
-                <div class="col-sm-12 padding-bottom-10">
-                    <select class="form-control">
-                        <option value="">--- WILAYAH ---</option>
-                    </select>
+                <div class="col-md-12 padding-bottom-10">
+                    <input id="wilayah" class="form-control" placeholder="Ketikan Nama Propinsi atau Kabupaten" type="text">
                 </div>
-                <div class="col-sm-12 padding-bottom-10">
-                    <select class="form-control">
-                        <option value="">--- REGIONAL ---</option>
-                    </select>
+                <div class="col-md-12 padding-bottom-10">
+                    <input id="regional" class="form-control" placeholder="Ketikan Nama Regional" type="text">
                 </div>
             </div>
         </div>
@@ -39,6 +35,22 @@
                         <option value="">--- SAMPAI TAHUN ---</option>
                     </select>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <div id="map-block" class="chart-wrapper">
+                <div class="chart-title">UNTUK PETA</div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div id="map-info-block" class="chart-wrapper">
+                <div class="chart-title">UNTUK INFO PETA</div>
+                <div class="chart-stage"></div>
+                <div class="chart-notes"></div>
             </div>
         </div>
     </div>
@@ -175,6 +187,7 @@
     {{ parent() }}
     <script type="text/javascript">
         jQuery(document).ready(function () {
+            Chart.init();
 
             //Eary Warning
             Chart.get(function (data) {

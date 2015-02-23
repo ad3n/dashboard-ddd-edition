@@ -4,6 +4,8 @@ Chart.scope = '';
 Chart.perPage = 8;
 Chart.page = 0;
 Chart.indikator = [];
+Chart.wilayah = [];
+Chart.regional = [];
 
 Chart.BulanIndonesia = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
 
@@ -156,9 +158,10 @@ Chart.init = function () {
 
     jQuery('#wilayah').autocomplete({
         source: function (request, response) {
-            if (request.term >= 3) {
+            if (request.term.length >= 3) {
                 Chart.request(function (result) {
-                    response(result);
+                    Chart.wilayah = result;
+                    response(result.name);
                 }, '/api/wilayah/get_like/' + request.term);
             }
         }
@@ -166,8 +169,9 @@ Chart.init = function () {
 
     jQuery('#regional').autocomplete({
         source: function (request, response) {
-            if (request.term >= 3) {
+            if (request.term.length >= 3) {
                 Chart.request(function (result) {
+                    Chart.regional = result;
                     response(result);
                 }, '/api/regional/get_like/' + request.term);
             }

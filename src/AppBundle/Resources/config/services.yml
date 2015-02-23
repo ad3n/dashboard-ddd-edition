@@ -1,59 +1,64 @@
 parameters:
-  app.data.class: AppBundle\Entity\Data
+    app.data.class: AppBundle\Entity\Data
 
 services:
-  app.chart.processor.nasional:
-    class: AppBundle\Data\NasionalDataProcessor
-    arguments:
-      - @doctrine.orm.entity_manager
-      - %app.data.class%
-    tags:
-      - { name: app.chart.data.processor }
+    app.chart.processor.nasional:
+        class: AppBundle\Data\NasionalDataProcessor
+        arguments:
+            - @doctrine.orm.entity_manager
+            - %app.data.class%
+        tags:
+            - { name: app.chart.data.processor }
 
-  app.chart.processor.propinsi:
-    class: AppBundle\Data\PropinsiDataProcessor
-    arguments:
-      - @doctrine.orm.entity_manager
-      - %app.data.class%
-    tags:
-      - { name: app.chart.data.processor }
+    app.chart.processor.propinsi:
+        class: AppBundle\Data\PropinsiDataProcessor
+        arguments:
+            - @doctrine.orm.entity_manager
+            - %app.data.class%
+        tags:
+            - { name: app.chart.data.processor }
 
-  app.chart.processor.kabupaten:
-    class: AppBundle\Data\KabupatenDataProcessor
-    arguments:
-      - @doctrine.orm.entity_manager
-      - %app.data.class%
-    tags:
-      - { name: app.chart.data.processor }
+    app.chart.processor.kabupaten:
+        class: AppBundle\Data\KabupatenDataProcessor
+        arguments:
+            - @doctrine.orm.entity_manager
+            - %app.data.class%
+        tags:
+            - { name: app.chart.data.processor }
 
-  app.chart.processor.kecamatan:
-    class: AppBundle\Data\KecamatanDataProcessor
-    arguments:
-      - @doctrine.orm.entity_manager
-      - %app.data.class%
-    tags:
-      - { name: app.chart.data.processor }
+    app.chart.processor.kecamatan:
+        class: AppBundle\Data\KecamatanDataProcessor
+        arguments:
+            - @doctrine.orm.entity_manager
+            - %app.data.class%
+        tags:
+            - { name: app.chart.data.processor }
 
-  app.chart.processor.kelurahan:
-    class: AppBundle\Data\KelurahanDataProcessor
-    arguments:
-      - @doctrine.orm.entity_manager
-      - %app.data.class%
-    tags:
-      - { name: app.chart.data.processor }
+    app.chart.processor.kelurahan:
+        class: AppBundle\Data\KelurahanDataProcessor
+        arguments:
+            - @doctrine.orm.entity_manager
+            - %app.data.class%
+        tags:
+            - { name: app.chart.data.processor }
 
-  app.chart.processor.regional:
-    class: AppBundle\Data\RegionalDataProcessor
-    arguments:
-      - @doctrine.orm.entity_manager
-      - %app.data.class%
-    tags:
-      - { name: app.chart.data.processor }
+    app.chart.processor.regional:
+        class: AppBundle\Data\RegionalDataProcessor
+        arguments:
+            - @doctrine.orm.entity_manager
+            - %app.data.class%
+        tags:
+            - { name: app.chart.data.processor }
 
-  app.chart.data.doctrine_collection:
-    class: AppBundle\Chart\Data\DoctrineDataCollection
+    app.chart.data.doctrine_collection:
+        class: AppBundle\Chart\Data\DoctrineDataCollection
 
-  app.indicator.factory:
-    class: AppBundle\Indikator\IndikatorFactory
-    arguments:
-      - @doctrine.orm.entity_manager
+    app.indicator.factory:
+        class: AppBundle\Indikator\IndikatorFactory
+        arguments:
+            - @doctrine.orm.entity_manager
+
+    app.wilayah.factory:
+        class: AppBundle\Wilayah\WilayahFactory
+        arguments:
+            - @doctrine.orm.entity_manager

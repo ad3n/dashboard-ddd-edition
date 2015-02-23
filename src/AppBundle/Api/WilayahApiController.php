@@ -6,7 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use AppBundle\Chart\Chart;
 
 /**
  * @Route("/wilayah")
@@ -20,6 +19,7 @@ class WilayahApiController extends  Controller
      */
     public function getLikeAction($query)
     {
-        return new JsonResponse(array('A', 'B', 'C'));
+        $wilayahFactory = $this->container->get('app.wilayah.factory');
+        return new JsonResponse($wilayahFactory->getDataForAutoComplete($query));
     }
 }

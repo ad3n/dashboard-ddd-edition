@@ -20,6 +20,6 @@ class WilayahApiController extends  Controller
     public function getLikeAction($query)
     {
         $wilayahFactory = $this->container->get('app.wilayah.factory');
-        return new JsonResponse($wilayahFactory->getDataForAutoComplete($query));
+        return new JsonResponse($wilayahFactory->getDataForAutoComplete(strtoupper($query)));
     }
 }

@@ -17,7 +17,7 @@ class Kabupaten
     protected $id;
 
     /**
-     * @ORM\Column(name="code", type="string", length=2, unique=true)
+     * @ORM\Column(name="code", type="string", length=4, unique=true)
      */
     protected $code;
 

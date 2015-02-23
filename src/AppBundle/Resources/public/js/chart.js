@@ -161,9 +161,12 @@ Chart.init = function () {
             if (request.term.length >= 3) {
                 Chart.request(function (result) {
                     Chart.wilayah = result;
-                    response(result.name);
+                    response(result);
                 }, '/api/wilayah/get_like/' + request.term);
             }
+        },
+        select: function (event, ui) {
+            jQuery('#wilayah-value').val(ui.item.value);
         }
     });
 
@@ -175,6 +178,9 @@ Chart.init = function () {
                     response(result);
                 }, '/api/regional/get_like/' + request.term);
             }
+        },
+        select: function (event, ui) {
+            jQuery('#regional-value').val(ui.item.value);
         }
     });
 };

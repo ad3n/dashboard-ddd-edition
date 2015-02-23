@@ -34,9 +34,9 @@ class WilayahFactory implements SearchableInterface
         $data = $this->findByKeyword($keyword);
         $output = array();
 
-        foreach ($data as $wilayah) {
-            $output['id'][] = $wilayah->getId();
-            $output['name'][] = $wilayah->getName();
+        foreach ($data as $key => $wilayah) {
+            $output[$key]['id'] = $wilayah->getId();
+            $output[$key]['value'] = $wilayah->getName();
         }
 
         return $output;

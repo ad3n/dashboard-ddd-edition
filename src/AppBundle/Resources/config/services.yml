@@ -62,3 +62,8 @@ services:
         class: AppBundle\Wilayah\WilayahFactory
         arguments:
             - @doctrine.orm.entity_manager
+
+    app.regional.factory:
+        class: AppBundle\Regional\RegionalFactory
+        arguments:
+            - @doctrine.orm.entity_manager

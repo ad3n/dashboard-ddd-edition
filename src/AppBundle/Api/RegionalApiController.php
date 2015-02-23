@@ -20,6 +20,7 @@ class RegionalApiController extends  Controller
      */
     public function getLikeAction($query)
     {
-        return new JsonResponse(array('X', 'Y', 'Z'));
+        $regionalFactory = $this->container->get('app.regional.factory');
+        return new JsonResponse($regionalFactory->getDataForAutoComplete(strtoupper($query)));
     }
 }

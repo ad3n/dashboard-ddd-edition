@@ -21,6 +21,6 @@ class HomeController extends Controller
      */
     public function homeAction()
     {
-        return $this->render('AppBundle:Home:index.html.twig');
+        return $this->render('AppBundle:Home:predefined.html.twig');
     }
 }

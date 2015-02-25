@@ -5,7 +5,7 @@ namespace CleanCrudBundle\Entity;
 
 interface EntityFactoryInterface
 {
-    public function addEntity($entity);
+    public function addEntity(EntityInterface $entity);
 
     public function get($entityName);
 }

@@ -1,0 +1,33 @@
+{% extends 'AppBundle:Layout:standard_layout.html.twig' %}
+{% block content %}
+<div style="width: 30%; margin: auto">
+    <div class="well no-padding">
+        <form action="{{ path('fos_user_security_check') }}" id="login-form" class="smart-form client-form" novalidate="novalidate" method="post">
+            <header>JKN Executive Dashboard</header>
+            <fieldset>
+                <section>
+                    <label class="label">Username</label>
+                    <label class="input"> <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="_username">
+                    </label>
+                </section>
+                <section>
+                    <label class="label">Password</label>
+                    <label class="input"> <i class="icon-append fa fa-lock"></i>
+                        <input type="password" name="_password">
+                    </label>
+                </section>
+                <section>
+                    <label class="checkbox">
+                        <input type="checkbox" name="_remember_me" checked="">
+                        <i></i>Selalu ingat saya</label>
+                </section>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            </fieldset>
+            <footer>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </footer>
+        </form>
+    </div>
+</div>
+{% endblock %}

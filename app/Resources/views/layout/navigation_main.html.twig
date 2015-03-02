@@ -1,71 +1,73 @@
 {% spaceless %}
-<aside id="left-panel">
-    <nav>
-        <ul>
-            <li>
-                <a href="{{ path('home') }}" title="Home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Master</span></a>
+    {% if app.security.token.user is null %}
+        <aside id="left-panel">
+            <nav>
                 <ul>
                     <li>
-                        <a href="#">Propinsi</a>
+                        <a href="{{ path('home') }}" title="Home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
                     </li>
                     <li>
-                        <a href="#">Regional</a>
+                        <a href="#"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Master</span></a>
+                        <ul>
+                            <li>
+                                <a href="#">Propinsi</a>
+                            </li>
+                            <li>
+                                <a href="#">Regional</a>
+                            </li>
+                            <li>
+                                <a href="#">Kabupaten</a>
+                            </li>
+                            <li>
+                                <a href="#">Kecamatan</a>
+                            </li>
+                            <li>
+                                <a href="#">Kelurahan</a>
+                            </li>
+                            <li>
+                                <a href="#">Indikator</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="#">Kabupaten</a>
+                        <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Indikator</span></a>
+                        <ul>
+                            <li>
+                                <a href="#">Kepesertaan</a>
+                            </li>
+                            <li>
+                                <a href="#">Pelayanan</a>
+                            </li>
+                            <li>
+                                <a href="#">Iuran</a>
+                            </li>
+                            <li>
+                                <a href="#">Pembayaran</a>
+                            </li>
+                            <li>
+                                <a href="#">Keuangan</a>
+                            </li>
+                            <li>
+                                <a href="#">Kelembagaan</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="#">Kecamatan</a>
+                        <a href="#"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Artikel</span></a>
                     </li>
                     <li>
-                        <a href="#">Kelurahan</a>
-                    </li>
-                    <li>
-                        <a href="#">Indikator</a>
+                        <a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Utilitas</span></a>
+                        <ul>
+                            <li>
+                                <a href="#">User Management</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Indikator</span></a>
-                <ul>
-                    <li>
-                        <a href="#">Kepesertaan</a>
-                    </li>
-                    <li>
-                        <a href="#">Pelayanan</a>
-                    </li>
-                    <li>
-                        <a href="#">Iuran</a>
-                    </li>
-                    <li>
-                        <a href="#">Pembayaran</a>
-                    </li>
-                    <li>
-                        <a href="#">Keuangan</a>
-                    </li>
-                    <li>
-                        <a href="#">Kelembagaan</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Artikel</span></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Utilitas</span></a>
-                <ul>
-                    <li>
-                        <a href="#">User Management</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <span class="minifyme" data-action="minifyMenu">
-        <i class="fa fa-arrow-circle-left hit"></i>
-    </span>
-</aside>
+            </nav>
+            <span class="minifyme" data-action="minifyMenu">
+                <i class="fa fa-arrow-circle-left hit"></i>
+            </span>
+        </aside>
+    {% endif %}
 {% endspaceless %}

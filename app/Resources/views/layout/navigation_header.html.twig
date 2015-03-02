@@ -1,36 +1,38 @@
 {% spaceless %}
-    <header id="header">
-        <div id="logo-group">
-            <span id="logo">
-                <img class="logo" src="{% if logo is not empty %}{{ logo | raw }}{% else %}{{ asset('bundles/app/img/logo_jkn.png') }}{% endif %}">
-            </span>
-        </div>
-        <div class="pull-right">
-            {% if widget is not empty %}{{ widget | raw }}{% endif %}
-            {% if user_panel is not empty %}
-                {{ user_panel | raw }}
-            {% else %}
-                <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
-                    <li class="">
-                        <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-                            <img src="{{ asset('bundles/app/img/avatars/male.png') }}" alt="Avatars" class="online" />
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li>
-                                <a href="#" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> Profil</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-cogs"></i> Ganti Password</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong>Keluar</strong></a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            {% endif %}
-        </div>
-    </header>
+    {% if app.security.token.user is null %}
+        <header id="header">
+            <div id="logo-group">
+                <span id="logo">
+                    <img class="logo" src="{% if logo is not empty %}{{ logo | raw }}{% else %}{{ asset('bundles/app/img/logo_jkn.png') }}{% endif %}">
+                </span>
+            </div>
+            <div class="pull-right">
+                {% if widget is not empty %}{{ widget | raw }}{% endif %}
+                {% if user_panel is not empty %}
+                    {{ user_panel | raw }}
+                {% else %}
+                    <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+                        <li class="">
+                            <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+                                <img src="{{ asset('bundles/app/img/avatars/male.png') }}" alt="Avatars" class="online" />
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="#" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> Profil</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-cogs"></i> Ganti Password</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong>Keluar</strong></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+        </header>
+    {% endif %}
 {% endspaceless %}

@@ -12,4 +12,9 @@ class AppBundle extends Bundle
     {
         $container->addCompilerPass(new ChartCompilerPass());
     }
+
+    public function getParent()
+    {
+        return 'FOSUserBundle';
+    }
 }

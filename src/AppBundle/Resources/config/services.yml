@@ -67,3 +67,11 @@ services:
         class: AppBundle\Regional\RegionalFactory
         arguments:
             - @doctrine.orm.entity_manager
+
+    app.security.encoder.generator:
+        class: AppBundle\Security\Encoder\BaseGenerator
+
+    app.security.encoder.password:
+        class: AppBundle\Security\Encoder\PasswordEncoder
+        arguments:
+            - @app.security.encoder.generator

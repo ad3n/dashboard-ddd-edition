@@ -1,5 +1,5 @@
 {% spaceless %}
-    {% if app.security.token.user is null %}
+    {% if app.user is not null %}
         <aside id="left-panel">
             <nav>
                 <ul>

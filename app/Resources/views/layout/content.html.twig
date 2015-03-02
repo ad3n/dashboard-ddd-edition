@@ -1,6 +1,6 @@
 {% spaceless %}
 <div id="main" role="main">
-    {% if app.security.token.user is null %}
+    {% if app.user is not null %}
         <div id="ribbon">
             <ol class="breadcrumb">
                 <li>Home</li>

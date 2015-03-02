@@ -1,5 +1,5 @@
 {% spaceless %}
-    {% if app.security.token.user is null %}
+    {% if app.user is not null %}
         <header id="header">
             <div id="logo-group">
                 <span id="logo">

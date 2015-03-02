@@ -183,4 +183,49 @@ Chart.init = function () {
             jQuery('#regional-value').val(ui.item.value);
         }
     });
+
+    jQuery('.filter').on('click', Chart.doFilter);
+};
+
+Chart.doFilter = function () {
+    var sekarang = new Date();
+
+    var wilayah = jQuery('#wilayah-value').val();
+    var regional = jQuery('#regional-value').val();
+
+    var dariBulan = jQuery('#dari-bulan').val();
+    var dariTahun = jQuery('#dari-tahun').val();
+
+    var sampaiBulan = jQuery('#sampai-bulan').val();
+    var sampaiTahun = jQuery('#sampai-tahun').val();
+
+    if ('' !== wilayah) {
+        regional = '';
+    }
+
+    if ('' !== regional) {
+        wilayah = '';
+    }
+
+    if ('' === dariBulan) {
+        dariBulan = 1;
+    }
+
+    if ('' === dariTahun) {
+        dariTahun = sekarang.getFullYear();
+    }
+
+    if ('' === sampaiBulan) {
+        sampaiBulan = sekarang.getMonth();
+    }
+
+    if ('' === sampaiTahun) {
+        sampaiTahun = sekarang.getFullYear();
+    }
+
+    Chart.render(wilayah, regional, dariBulan, dariTahun, sampaiBulan, sampaiTahun);
+};
+
+Chart.render = function (wilayah, regional, dariBulan, dariTahun, sampaiBulan, sampaiTahun) {
+
 };

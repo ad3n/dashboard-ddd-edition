@@ -1,38 +1,38 @@
 {% extends 'AppBundle:Layout:chart_layout.html.twig' %}
 {% block content %}
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6 col-sm-6">
             <div class="row">
-                <div class="col-md-12 padding-bottom-10">
+                <div class="col-md-12 col-sm-12 padding-bottom-10">
                     <input id="wilayah" class="form-control" placeholder="Ketikan Nama Propinsi atau Kabupaten" type="text">
                     <input id="wilayah-value" type="hidden" value=""/>
                 </div>
-                <div class="col-md-12 padding-bottom-10">
+                <div class="col-md-12 col-sm-12 padding-bottom-10">
                     <input id="regional" class="form-control" placeholder="Ketikan Nama Regional" type="text">
                     <input id="regional-value" type="hidden" value=""/>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-md-6 col-sm-6">
             <div class="row">
-                <div class="col-sm-6 padding-bottom-10">
+                <div class="col-md-6 col-sm-6 padding-bottom-10">
                     <select id="dari-bulan" class="form-control">
                         <option value="">--- DARI BULAN ---</option>
                     </select>
                 </div>
-                <div class="col-sm-6 padding-bottom-10">
+                <div class="col-md-6 col-sm-6 padding-bottom-10">
                     <select id="dari-tahun" class="form-control">
                         <option value="">--- DARI TAHUN ---</option>
                     </select>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 padding-bottom-10">
+                <div class="col-md-6 col-sm-6 padding-bottom-10">
                     <select id="sampai-bulan" class="form-control">
                         <option value="">--- SAMPAI BULAN  ---</option>
                     </select>
                 </div>
-                <div class="col-sm-6 padding-bottom-10">
+                <div class="col-md-6 col-sm-6 padding-bottom-10">
                     <select id="sampai-tahun" class="form-control">
                         <option value="">--- SAMPAI TAHUN ---</option>
                     </select>
@@ -41,14 +41,19 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-9">
+        <div class="col-md-12 col-sm-12 padding-bottom-10">
+            <button class="btn btn-primary col-md-12 col-sm-12 filter">FILTER</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 col-sm-9">
             <div id="map-block" class="chart-wrapper">
                 <div class="chart-title">UNTUK PETA</div>
                 <div class="chart-stage"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-md-3 col-sm-3">
             <div id="map-info-block" class="chart-wrapper">
                 <div class="chart-title">UNTUK INFO PETA</div>
                 <div class="chart-stage"></div>
@@ -57,42 +62,42 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="top1" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="top2" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="top3" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="top4" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="top5" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="top6" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>
@@ -101,37 +106,37 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="total1" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="total2" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="total3" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="total4" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="total5" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-md-2 col-sm-2">
             <div id="total6" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-notes"></div>
@@ -139,14 +144,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-9">
+        <div class="col-md-9 col-sm-9">
             <div id="main-block" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-md-3 col-sm-3">
             <div id="indicator-block" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>
@@ -155,27 +160,27 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-md-3 col-sm-3">
             <div id="bottom1" class="chart-wrapper">
                 <div class="chart-title">BERITA MEDIA SOSIAL</div>
                 <div class="chart-stage"></div>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-md-3 col-sm-3">
             <div id="bottom2" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-md-3 col-sm-3">
             <div id="bottom3" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>
                 <div class="chart-notes"></div>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-md-3 col-sm-3">
             <div id="bottom4" class="chart-wrapper">
                 <div class="chart-title"></div>
                 <div class="chart-stage"></div>

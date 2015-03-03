@@ -9,8 +9,6 @@ interface ChartInterface
 {
     public function setBlock(BlockInterface $selector);
 
-    public function getScope();
-
     public function getBlock();
 
     public function getTitle();

@@ -29,7 +29,7 @@ class ChartApiController extends  Controller
      */
     public function getAction($indikator, $scope, $kode, $dari, $sampai)
     {
-        $proccessor = $this->container->get('app.chart.data.processor_factory')->createDataProcessor($scope);
+        $proccessor = $this->container->get('app.chart.data.processor_factory')->createDataProcessor('doctrine');
         $dataCollection = $this->container->get('app.chart.data.doctrine_collection');
         $dataCollection->setProcessor($proccessor);
         $dataCollection->setIndicator($this->getDoctrine()->getRepository('AppBundle:Indikator')->findOneBy(array('code' => $indikator)));
@@ -60,7 +60,6 @@ class ChartApiController extends  Controller
         $output['indikator']['merah'] = $indicator->getRedIndicator();
         $output['indikator']['kuning'] = $indicator->getYellowIndicator();
         $output['indikator']['hijau'] = $indicator->getGreenIndicator();
-        $output['scope'] = $chart->getScope();
         $output['data'] = $chart->getData();
 
         return new JsonResponse($output);
@@ -101,7 +100,7 @@ class ChartApiController extends  Controller
         $indicators = $this->container->get('app.indicator.factory')->buildList($indikator);
 
         foreach ($indicators as $key => $indicator) {
-            $proccessor = $this->container->get('app.chart.data.processor_factory')->createDataProcessor($scope);
+            $proccessor = $this->container->get('app.chart.data.processor_factory')->createDataProcessor('doctrine');
             $dataCollection = $this->container->get('app.chart.data.doctrine_collection');
             $dataCollection->setProcessor($proccessor);
             $dataCollection->setIndicator($indicator);
@@ -117,7 +116,6 @@ class ChartApiController extends  Controller
             $output[$key]['indikator']['merah'] = $indicator->getRedIndicator();
             $output[$key]['indikator']['kuning'] = $indicator->getYellowIndicator();
             $output[$key]['indikator']['hijau'] = $indicator->getGreenIndicator();
-            $output[$key]['scope'] = $chart->getScope();
             $output[$key]['data'] = $chart->getData();
         }
 

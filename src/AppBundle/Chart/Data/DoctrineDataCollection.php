@@ -100,12 +100,4 @@ class DoctrineDataCollection implements DataCollectionInterface
 
         return $data;
     }
-
-    /**
-     * @return string
-     */
-    public function getScope()
-    {
-        return $this->proccessor->getScope();
-    }
 }

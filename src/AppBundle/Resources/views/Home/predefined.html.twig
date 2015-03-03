@@ -196,22 +196,15 @@
         jQuery(document).ready(function () {
             Chart.init();
 
-            //Eary Warning
-            Chart.get(function (data) {
-                Chart.createGauge(data, '#top1', data['indikator']['name'], {
-                    click: function (e) {
-                        alert('Under Constructions.');
-                    }
-                });
-            }, 'PS01', 'nasional');
-
-            Chart.get(function (data) {
-                Chart.createGauge(data, '#top2', data['indikator']['name'], {
-                    click: function (e) {
-                        alert('Under Constructions.');
-                    }
-                });
-            }, 'PS02', 'nasional', 0, '01_2015', '12_2015');
+{% for i, val in top %}
+    Chart.get(function (data) {
+        Chart.createGauge(data, '{{ val.jquerySelector }}', data['indikator']['name'], {
+            click: function (e) {
+                alert('Under Constructions.');
+            }
+        });
+    }, '{{ val.indicator }}', 'nasional');
+{% endfor %}
 
             Chart.get(function (data) {
                 Chart.createGauge(data, '#top3', data['indikator']['name'], {

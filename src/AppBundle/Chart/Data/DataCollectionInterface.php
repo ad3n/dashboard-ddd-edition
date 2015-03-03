@@ -11,6 +11,4 @@ interface DataCollectionInterface
     public function getIndicator();
 
     public function getData();
-
-    public function getScope();
 }

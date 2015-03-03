@@ -225,7 +225,3 @@ Chart.doFilter = function () {
 
     Chart.render(wilayah, regional, dariBulan, dariTahun, sampaiBulan, sampaiTahun);
 };
-
-Chart.render = function (wilayah, regional, dariBulan, dariTahun, sampaiBulan, sampaiTahun) {
-
-};

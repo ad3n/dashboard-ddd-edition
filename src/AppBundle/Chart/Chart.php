@@ -16,11 +16,6 @@ class Chart implements ChartInterface
     /**
      * @var string
      */
-    protected $scope;
-
-    /**
-     * @var string
-     */
     protected $title;
 
     /**
@@ -50,14 +45,6 @@ class Chart implements ChartInterface
     public function getBlock()
     {
         return $this->block;
-    }
-
-    /**
-     * @return string
-     */
-    public function getScope()
-    {
-        return $this->scope;
     }
 
     /**
@@ -95,7 +82,6 @@ class Chart implements ChartInterface
     {
         $datas = $dataCollection->getData();
         $this->indicator = $dataCollection->getIndicator();
-        $this->scope = $dataCollection->getScope();
         $this->title = strtoupper($this->indicator->getName());
 
         foreach ($datas as $data) {

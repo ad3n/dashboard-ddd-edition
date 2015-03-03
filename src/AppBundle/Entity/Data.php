@@ -326,7 +326,7 @@ class Data implements ChartDataInterface
     /**
      * Get regional
      *
-     * @return string 
+     * @return string
      */
     public function getRegional()
     {
@@ -349,7 +349,7 @@ class Data implements ChartDataInterface
     /**
      * Get indikator
      *
-     * @return string 
+     * @return string
      */
     public function getIndikator()
     {

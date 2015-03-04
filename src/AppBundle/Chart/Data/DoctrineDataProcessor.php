@@ -32,11 +32,11 @@ class DoctrineDataProcessor implements DataProcessorInterface
         $qb->select('d');
         $qb->from($this->class, 'd');
 
-        if (array_key_exists('propinsi', $criteria) || array_key_exists('regional', $criteria)) {
+        if (array_key_exists('wilayah', $criteria) || array_key_exists('regional', $criteria)) {
             if (empty($criteria['regional'])) {
                 $qb->andWhere($qb->expr()->orX($qb->expr()->eq('d.propinsi', ':propinsi'), $qb->expr()->eq('d.kabupaten', ':kabupaten')));
-                $qb->setParameter('propinsi', $criteria['propinsi']);
-                $qb->setParameter('kabupaten', $criteria['kabupaten']);
+                $qb->setParameter('propinsi', $criteria['wilayah']);
+                $qb->setParameter('kabupaten', $criteria['wilayah']);
             } else {
                 $qb->andWhere($qb->expr()->eq('d.regional', ':regional'));
                 $qb->setParameter('regional', $criteria['regional']);

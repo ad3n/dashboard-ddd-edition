@@ -196,100 +196,36 @@
         jQuery(document).ready(function () {
             Chart.init();
 
-{% for i, val in top %}
-    Chart.get(function (data) {
-        Chart.createGauge(data, '{{ val.jquerySelector }}', data['indikator']['name'], {
-            click: function (e) {
-                alert('Under Constructions.');
-            }
-        });
-    }, '{{ val.indicator }}', 'nasional');
-{% endfor %}
+            {% for i, val in top %}
+                Chart.get(function (data) {
+                    Chart.createGauge(data, '{{ val.jquerySelector }}', data['indikator']['name'], {
+                        click: function (e) {
+                            alert('Under Constructions.');
+                        }
+                    });
+                }, '{{ val.indicator }}', '{{ scope }}', '{{ value }}', '{{ dari }}', '{{ sampai }}');
+            {% endfor %}
 
-            Chart.get(function (data) {
-                Chart.createGauge(data, '#top3', data['indikator']['name'], {
-                    click: function (e) {
-                        alert('Under Constructions.');
-                    }
-                });
-            }, 'PS03', 'nasional');
+            {% for i, val in total %}
+                Chart.get(function (data) {
+                    Chart.renderTotal('{{ val.jquerySelector }}', data);
+                }, '{{ val.indicator }}', '{{ scope }}', '{{ value }}', '{{ dari }}', '{{ sampai }}');
+            {% endfor %}
 
-            Chart.get(function (data) {
-                Chart.createGauge(data, '#top4', data['indikator']['name'], {
-                    click: function (e) {
-                        alert('Under Constructions.');
-                    }
-                });
-            }, 'PS04', 'nasional');
+            {% for i, val in main %}
+                Chart.createMainChart('{{ val.indicator }}');
+            {% endfor %}
 
-            Chart.get(function (data) {
-                Chart.createGauge(data, '#top5', data['indikator']['name'], {
-                    click: function (e) {
-                        alert('Under Constructions.');
-                    }
-                });
-            }, 'PS05', 'nasional');
+            {% for i, val in bottom %}
+                Chart.get(function (data) {
+                    Chart.createPie(data, '{{ val.jquerySelector }}', data['indikator']['name'], {
+                        click: function (e) {
+                            alert('Under Constructions.');
+                        }
+                    });
+                }, '{{ val.indicator }}', '{{ scope }}', '{{ value }}', '{{ dari }}', '{{ sampai }}');
+            {% endfor %}
 
-            Chart.get(function (data) {
-                Chart.createGauge(data, '#top6', data['indikator']['name'], {
-                    click: function (e) {
-                        alert('Under Constructions.');
-                    }
-                });
-            }, 'PS06', 'nasional');
-
-            //Total Block
-            Chart.get(function (data) {
-                Chart.renderTotal('#total1', data);
-            }, 'PS07', 'nasional');
-
-            Chart.get(function (data) {
-                Chart.renderTotal('#total2', data);
-            }, 'PS06', 'nasional');
-
-            Chart.get(function (data) {
-                Chart.renderTotal('#total3', data);
-            }, 'PS05', 'nasional');
-
-            Chart.get(function (data) {
-                Chart.renderTotal('#total4', data);
-            }, 'PS04', 'nasional');
-
-            Chart.get(function (data) {
-                Chart.renderTotal('#total5', data);
-            }, 'PS03', 'nasional');
-
-            Chart.get(function (data) {
-                Chart.renderTotal('#total6', data);
-            }, 'PS02', 'nasional');
-
-            //Main Chart
-            Chart.createMainChart('PS07');
-
-            //Bottom Chart
-            Chart.get(function (data) {
-                Chart.createPie(data, '#bottom2', data['indikator']['name'], {
-                    click: function (e) {
-                        alert('Under Constructions.');
-                    }
-                });
-            }, 'PS04', 'nasional');
-
-            Chart.get(function (data) {
-                Chart.createPie(data, '#bottom3', data['indikator']['name'], {
-                    click: function (e) {
-                        alert('Under Constructions.');
-                    }
-                });
-            }, 'PS05', 'nasional');
-
-            Chart.get(function (data) {
-                Chart.createPie(data, '#bottom4', data['indikator']['name'], {
-                    click: function (e) {
-                        alert('Under Constructions.');
-                    }
-                });
-            }, 'PS06', 'nasional');
         });
     </script>
 {% endblock %}

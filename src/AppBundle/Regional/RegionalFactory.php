@@ -30,7 +30,7 @@ class RegionalFactory implements SearchableInterface
         $output = array();
 
         foreach ($data as $key => $regional) {
-            $output[$key]['id'] = $regional->getId();
+            $output[$key]['id'] = $regional->getCode();
             $output[$key]['value'] = $regional->getName();
         }
 

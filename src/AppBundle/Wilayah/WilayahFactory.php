@@ -35,7 +35,7 @@ class WilayahFactory implements SearchableInterface
         $output = array();
 
         foreach ($data as $key => $wilayah) {
-            $output[$key]['id'] = $wilayah->getId();
+            $output[$key]['id'] = $wilayah->getCode();
             $output[$key]['value'] = $wilayah->getName();
         }
 

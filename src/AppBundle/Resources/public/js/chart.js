@@ -166,7 +166,7 @@ Chart.init = function () {
             }
         },
         select: function (event, ui) {
-            jQuery('#wilayah-value').val(ui.item.value);
+            jQuery('#wilayah-value').val(ui.item.id);
         }
     });
 
@@ -180,7 +180,7 @@ Chart.init = function () {
             }
         },
         select: function (event, ui) {
-            jQuery('#regional-value').val(ui.item.value);
+            jQuery('#regional-value').val(ui.item.id);
         }
     });
 
@@ -190,22 +190,23 @@ Chart.init = function () {
 Chart.doFilter = function () {
     var sekarang = new Date();
 
-    var wilayah = jQuery('#wilayah-value').val();
-    var regional = jQuery('#regional-value').val();
+    var wilayah = '0';
+    var regional = '0';
+
+    if ('' !== jQuery('#wilayah-value').val()) {
+        wilayah = jQuery('#wilayah-value').val();
+    }
+
+    if ('' !== jQuery('#regional-value').val()) {
+        regional = jQuery('#regional-value').val();
+        wilayah = '0';
+    }
 
     var dariBulan = jQuery('#dari-bulan').val();
     var dariTahun = jQuery('#dari-tahun').val();
 
     var sampaiBulan = jQuery('#sampai-bulan').val();
     var sampaiTahun = jQuery('#sampai-tahun').val();
-
-    if ('' !== wilayah) {
-        regional = '';
-    }
-
-    if ('' !== regional) {
-        wilayah = '';
-    }
 
     if ('' === dariBulan) {
         dariBulan = 1;
@@ -223,5 +224,5 @@ Chart.doFilter = function () {
         sampaiTahun = sekarang.getFullYear();
     }
 
-    Chart.render(wilayah, regional, dariBulan, dariTahun, sampaiBulan, sampaiTahun);
+    window.location = '/admin/filter/' + wilayah + '/' + regional + '/' + dariBulan + '_' + dariTahun + '/' + sampaiBulan + '_' + sampaiTahun + '/'
 };

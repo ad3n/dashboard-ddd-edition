@@ -20,6 +20,18 @@ class BlockLocation
 
     const TOP_BLOCK_6 = 'top6';
 
+    const TOTAL_BLOCK_1 = 'total1';
+
+    const TOTAL_BLOCK_2 = 'total2';
+
+    const TOTAL_BLOCK_3 = 'total3';
+
+    const TOTAL_BLOCK_4 = 'total4';
+
+    const TOTAL_BLOCK_5 = 'total5';
+
+    const TOTAL_BLOCK_6 = 'total6';
+
     const MAIN_BLOCK = 'main-block';
 
     const INDICATOR_BLOCK = 'indicator-block';

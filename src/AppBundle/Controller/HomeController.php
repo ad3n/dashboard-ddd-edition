@@ -13,15 +13,6 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-
-        exit();
-    }
-
-    /**
-     * @Route("/home/")
-     */
-    public function homeAction()
-    {
         $user = $this->getUser();
         $block = $this->getDoctrine()->getRepository('AppBundle:Block');
         $scope = 'nasional';
@@ -52,9 +43,14 @@ class HomeController extends Controller
         $scope = 'wilayah';
         $value = $wilayah;
 
-        if ('0' === $wilayah) {
-            $scope = 'regional';
-            $value = $regional;
+        if ('0' === $wilayah && '0' === $regional) {
+            $scope = 'nasional';
+            $value = '0';
+        } else {
+            if ('0' === $wilayah) {
+                $scope = 'regional';
+                $value = $regional;
+            }
         }
 
         return $this->render('AppBundle:Home:predefined.html.twig', array(

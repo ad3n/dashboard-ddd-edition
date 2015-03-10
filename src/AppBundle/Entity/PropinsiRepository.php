@@ -14,4 +14,9 @@ class PropinsiRepository extends EntityRepository implements SearchableInterface
 
         return $qb->getQuery()->getResult();
     }
+
+    public function findAll()
+    {
+        return $this->createQueryBuilder('o')->orderBy('o.id', 'DESC')->getQuery()->getResult();
+    }
 }

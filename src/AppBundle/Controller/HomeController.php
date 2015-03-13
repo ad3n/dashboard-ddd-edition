@@ -34,7 +34,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/filter/{wilayah}/{regional}/{dari}/{sampai}/")
+     * @Route("/filter/{wilayah}/{regional}/{dari}/{sampai}/", "home_filtered")
      */
     public function filterAction($wilayah, $regional, $dari, $sampai)
     {
@@ -64,5 +64,52 @@ class HomeController extends Controller
             'dari' => $dari,
             'sampai' => $sampai,
         ));
+    }
+
+    /**
+     * @Route("/detail_per_indikator/{indikator}/{wilayah}/{regional}/{dari}/{sampai}/", name="detail_per_indikator")
+     */
+    public function detailAction($indikator, $wilayah, $regional, $dari, $sampai)
+    {
+        $criteria['indikator'] = $indikator;
+
+        $criteria['wilayah'] = $wilayah;
+
+        if ('0' === $wilayah && '0' === $regional) {
+            unset($criteria['wilayah']);
+        } else {
+            if ('0' === $wilayah) {
+                $scope = 'regional';
+                $value = $regional;
+            }
+        }
+
+        $criteria = array();
+        $from = new \DateTime();
+        $from->setDate($from->format('Y'), 1, 1);
+        $to = new \DateTime();
+        $to->setDate($to->format('Y'), 12, 31);
+
+        if ('0' !== $dari) {
+            $from = \DateTime::createFromFormat('m_Y', $dari);
+            $to = \DateTime::createFromFormat('m_Y', $sampai);
+        }
+
+        $proccessor = $proccessor = $this->container->get('app.chart.data.processor_factory')->createDataProcessor('regional');
+        if (array_key_exists('wilayah', $criteria)) {
+            $proccessor = $this->container->get('app.chart.data.processor_factory')->createDataProcessor('wilayah');
+        }
+
+        $dataCollection = $this->container->get('app.chart.data.doctrine_collection');
+        $dataCollection->setProcessor($proccessor);
+        $dataCollection->setIndicator($this->getDoctrine()->getRepository('AppBundle:Indikator')->findOneBy(array('code' => $indikator)));
+
+        $dataCollection->setFilter($from, $to, $criteria);
+
+        $chart = new Chart();
+        $chart->setData($dataCollection);
+
+        \Symfony\Component\VarDumper\VarDumper::dump($chart->getData());
+        exit();
     }
 }

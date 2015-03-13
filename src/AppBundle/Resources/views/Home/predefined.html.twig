@@ -200,7 +200,11 @@
                 Chart.get(function (data) {
                     Chart.createGauge(data, '{{ val.jquerySelector }}', data['indikator']['name'], {
                         click: function (e) {
-                            alert('Under Constructions.');
+                            {% if scope is 'nasional' %}
+                                    {% set wilayah = '0' %}
+                                    {% set regional = '0' %}
+                            {% endif %}
+{#                            window.location = '{{ url ('detail_per_indikator', {'indikator': val.indicator}) }}';#}
                         }
                     });
                 }, '{{ val.indicator }}', '{{ scope }}', '{{ value }}', '{{ dari }}', '{{ sampai }}');

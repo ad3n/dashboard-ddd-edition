@@ -200,11 +200,25 @@
                 Chart.get(function (data) {
                     Chart.createGauge(data, '{{ val.jquerySelector }}', data['indikator']['name'], {
                         click: function (e) {
-                            {% if scope is 'nasional' %}
-                                    {% set wilayah = '0' %}
-                                    {% set regional = '0' %}
+                            {% if scope is sameas('nasional') %}
+                                {% set wilayah = 0 %}
+                                {% set regional = 0 %}
                             {% endif %}
-{#                            window.location = '{{ url ('detail_per_indikator', {'indikator': val.indicator}) }}';#}
+                            {% if scope is sameas('wilayah') %}
+                                {% set wilayah = value %}
+                                {% set regional = 0 %}
+                            {% endif %}
+                            {% if scope is sameas('regional') %}
+                                {% set wilayah = 0 %}
+                                {% set regional = value %}
+                            {% endif %}
+                            window.location = '{{ url ('detail_per_indikator', {
+                                'indikator': val.indicator,
+                                'wilayah': wilayah,
+                                'regional': regional,
+                                'dari': dari,
+                                'sampai': sampai
+                            }) }}';
                         }
                     });
                 }, '{{ val.indicator }}', '{{ scope }}', '{{ value }}', '{{ dari }}', '{{ sampai }}');

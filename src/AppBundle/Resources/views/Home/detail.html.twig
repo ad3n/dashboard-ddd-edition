@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>DATA {{ indicator.chartTitle | upper }} {{ additional_title | upper }} TAHUN {{ sampai.format('Y') }}</title>
+    </head>
+    <body>
+        <h3 style="text-align: center;">DATA {{ indicator.chartTitle | upper }} {{ additional_title | upper }} TAHUN {{ sampai.format('Y') }}</h3>
+        <table style="width: 100%; border: 1px solid;">
+            <tr>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">No</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">{{ wilayah_title }}</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">Januari</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">Februari</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">Maret</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">April</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">Mei</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">Juni</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">Juli</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">Agustus</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">September</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">Oktober</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">November</td>
+                <td style="padding: 3px; border: 1px solid; font-weight: bold;">Desember</td>
+            </tr>
+            {% for i, v in data['daerah'] %}
+                <tr>
+                    <td style="padding: 3px; border: 1px solid;">{{ i + 1 }}</td>
+                    <td style="padding: 3px; border: 1px solid;">{{ v.name }}</td>
+                {% for y, z in data['chart'][i] %}
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[1].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[2].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[3].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[4].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[5].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[6].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[7].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[8].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[9].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[10].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[11].nominator | number_format(0, ',', '.') }}</td>
+                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[12].nominator | number_format(0, ',', '.') }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

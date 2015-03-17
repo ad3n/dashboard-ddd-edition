@@ -88,7 +88,7 @@ Chart.createArea = function (handler, data, selector, title) {
     Chart.category(output, output['total'], selector, title, Chart.BulanIndonesia, 'area', handler);
 };
 
-Chart.createMainChart = function (indikator) {
+Chart.createMainChart = function (indikator, scope, value, dari, sampai) {
     Chart.get(function (data) {
         Chart.createColumn({
             click: function (e) {
@@ -96,11 +96,11 @@ Chart.createMainChart = function (indikator) {
             }
         }, data, '#main-block', data['indikator']['name']);
 
-        Chart.createIndicatorListChart(indikator);
-    }, indikator, 'nasional');
+        Chart.createIndicatorListChart(indikator, scope, value, dari, sampai);
+    }, indikator, scope, value, dari, sampai);
 };
 
-Chart.createIndicatorListChart = function (indikator) {
+Chart.createIndicatorListChart = function (indikator, scope, value, dari, sampai) {
     Chart.getIndikator(function (data) {
         var chart = Chart.processDataGlobal(data);
 
@@ -113,11 +113,11 @@ Chart.createIndicatorListChart = function (indikator) {
                             Chart.getDetailChart(category, this.category, this.series.name, data);
                         }
                     }, data, '#main-block', data['indikator']['name']);
-                }, category, 'nasional');
+                }, category, scope, value, dari, sampai);
             }
         });
 
-    }, indikator, 'nasional');
+    }, indikator, scope, value, dari, sampai);
 };
 
 Chart.getDetailChart = function (indikator, bulan, kode, data) {

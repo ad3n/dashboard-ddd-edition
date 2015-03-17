@@ -231,7 +231,7 @@
             {% endfor %}
 
             {% for i, val in main %}
-                Chart.createMainChart('{{ val.indicator }}');
+                Chart.createMainChart('{{ val.indicator }}', '{{ scope }}', '{{ value }}', '{{ dari }}', '{{ sampai }}');
             {% endfor %}
 
             {% for i, val in bottom %}

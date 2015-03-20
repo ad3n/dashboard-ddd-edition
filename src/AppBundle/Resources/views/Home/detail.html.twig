@@ -2,10 +2,10 @@
     <head>
         <title>DATA {{ indicator.chartTitle | upper }} {{ additional_title | upper }} TAHUN {{ sampai.format('Y') }}</title>
     </head>
-    <body>
+    <body style="background: #eeeeee">
         <h3 style="text-align: center;">DATA {{ indicator.chartTitle | upper }} {{ additional_title | upper }} TAHUN {{ sampai.format('Y') }}</h3>
         <table style="width: 100%; border: 1px solid;">
-            <tr>
+            <tr style="background-color: #cacaca;">
                 <td style="padding: 3px; border: 1px solid; font-weight: bold;">No</td>
                 <td style="padding: 3px; border: 1px solid; font-weight: bold;">{{ wilayah_title }}</td>
                 <td style="padding: 3px; border: 1px solid; font-weight: bold;">Januari</td>
@@ -21,26 +21,72 @@
                 <td style="padding: 3px; border: 1px solid; font-weight: bold;">November</td>
                 <td style="padding: 3px; border: 1px solid; font-weight: bold;">Desember</td>
             </tr>
+            {% set totalJanuari = 0 %}
+            {% set totalFebruari = 0 %}
+            {% set totalMaret = 0 %}
+            {% set totalApril = 0 %}
+            {% set totalMei = 0 %}
+            {% set totalJuni = 0 %}
+            {% set totalJuli = 0 %}
+            {% set totalAgustus = 0 %}
+            {% set totalSeptember = 0 %}
+            {% set totalOktober = 0 %}
+            {% set totalNovember = 0 %}
+            {% set totalDesember = 0 %}
+
             {% for i, v in data['daerah'] %}
                 <tr>
                     <td style="padding: 3px; border: 1px solid;">{{ i + 1 }}</td>
                     <td style="padding: 3px; border: 1px solid;">{{ v.name }}</td>
-                {% for y, z in data['chart'][i] %}
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[1].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[2].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[3].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[4].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[5].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[6].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[7].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[8].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[9].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[10].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[11].nominator | number_format(0, ',', '.') }}</td>
-                    <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[12].nominator | number_format(0, ',', '.') }}</td>
-                {% endfor %}
+                {% if data['chart'][i] is not empty %}
+                    {% for y, z in data['chart'][i] %}
+
+                        {% set totalJanuari = totalJanuari + z[1].nominator %}
+                        {% set totalFebruari = totalFebruari + z[2].nominator %}
+                        {% set totalMaret = totalMaret + z[3].nominator %}
+                        {% set totalApril = totalApril + z[4].nominator %}
+                        {% set totalMei = totalMei + z[5].nominator %}
+                        {% set totalJuni = totalJuni + z[6].nominator %}
+                        {% set totalJuli = totalJuli + z[7].nominator %}
+                        {% set totalAgustus = totalAgustus + z[8].nominator %}
+                        {% set totalSeptember = totalSeptember + z[9].nominator %}
+                        {% set totalOktober = totalOktober + z[10].nominator %}
+                        {% set totalNovember = totalNovember + z[11].nominator %}
+                        {% set totalDesember = totalDesember + z[12].nominator %}
+
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[1].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[2].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[3].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[4].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[5].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[6].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[7].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[8].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[9].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[10].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[11].nominator | number_format(0, ',', '.') }}</td>
+                        <td style="padding: 3px; border: 1px solid; text-align: right;">{{ z[12].nominator | number_format(0, ',', '.') }}</td>
+                    {% endfor %}
+                {% else %}
+                    <td colspan="12" style="padding: 3px; border: 1px solid; text-align: center;">DATA TIDAK TERSEDIA</td>
+                {% endif %}
                 </tr>
             {% endfor %}
+            <tr style="background-color: #004d60;">
+                <td colspan="2" style="padding: 3px; border: 1px solid; font-weight: bold; text-align: center;">Total</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalJanuari | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalFebruari | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalMaret | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalApril | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalMei | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalJuni | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalJuli | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalAgustus | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalSeptember | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalOktober | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalNovember | number_format(0, ',', '.') }}</td>
+                <td style="padding: 3px; border: 1px solid; text-align: right; font-weight: bold;">{{ totalDesember | number_format(0, ',', '.') }}</td>
+            </tr>
         </table>
     </body>
 </html>

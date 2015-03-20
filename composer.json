@@ -24,7 +24,7 @@
         "knplabs/knp-paginator-bundle": "~2.4",
         "knplabs/knp-menu-bundle": "~2",
         "ihsanudin/compressor": "dev-master",
-        "ihsanudin/simple-crud-bundle": "dev-master"
+        "ihsanudin/simple-admin-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

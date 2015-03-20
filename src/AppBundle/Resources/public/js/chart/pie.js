@@ -10,15 +10,15 @@ Chart.pie = function (data, total, selector, title, handler) {
             text: ''
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.y} %</b>'
+            pointFormat: '{series.name}: <b>{point.y}</b>'
         },
         plotOptions: {
             pie: {
                 allowPointSelect: true,
                 cursor: 'pointer',
                 dataLabels: {
-                    enabled: false,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f}',
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
                     style: {
                         color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                     }
